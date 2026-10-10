@@ -66,6 +66,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+.wrap.wide { max-width: none; }
 
 /* A soft headlight that follows the cursor across the dark page */
 .glow {
@@ -101,7 +102,7 @@ main, header, footer { position: relative; z-index: 1; }
 
 /* Hero: the name gets the whole first screen */
 .hero { padding: clamp(48px, 9vw, 116px) 0 clamp(40px, 6vw, 72px); }
-.hero .lit { transform-origin: 50% 0; will-change: transform, opacity; }
+.hero .lit { transform-origin: 50% 0; will-change: transform, opacity; max-width: min(100%, 205svh); }
 @media (min-width: 821px) {
   .hero {
     min-height: calc(100svh - 58px);
@@ -241,7 +242,7 @@ main, header, footer { position: relative; z-index: 1; }
 <body>
 <div class="glow" id="glow" aria-hidden="true"></div>
 
-<div class="wrap">
+<div class="wrap wide">
   <header class="top">
     <a class="home" href="/">amoghrex</a>
     <nav aria-label="Elsewhere">
@@ -251,16 +252,14 @@ main, header, footer { position: relative; z-index: 1; }
       <a href="https://www.tiktok.com/@amoghrex">TikTok</a>
     </nav>
   </header>
+</div>
 
-  <main>
+<main>
+  <div class="wrap wide">
     <section class="hero" aria-label="Intro">
       <h1 class="sr">Amogh Varote</h1>
       <svg class="lit trace" id="hero-name" viewBox="-3 -3 1073 317" aria-hidden="true">
         <defs>
-          <g id="hero-words">
-            <text x="-3" y="140">AMOGH</text>
-            <text x="-3" y="308">VAROTE</text>
-          </g>
           <radialGradient id="hero-grad">
             <stop offset="0" stop-color="#fff"/>
             <stop offset=".45" stop-color="#fff" stop-opacity=".6"/>
@@ -270,8 +269,8 @@ main, header, footer { position: relative; z-index: 1; }
             <circle class="beam" cx="-500" cy="150" r="0" fill="url(#hero-grad)"/>
           </mask>
         </defs>
-        <use href="#hero-words" class="outline"/>
-        <use href="#hero-words" class="lamp" mask="url(#hero-mask)"/>
+        <g class="outline"><text x="-3" y="140" font-family="Archivo, sans-serif" font-size="200" font-weight="800">AMOGH</text><text x="-3" y="308" font-family="Archivo, sans-serif" font-size="200" font-weight="800">VAROTE</text></g>
+        <g class="lamp" mask="url(#hero-mask)"><text x="-3" y="140" font-family="Archivo, sans-serif" font-size="200" font-weight="800">AMOGH</text><text x="-3" y="308" font-family="Archivo, sans-serif" font-size="200" font-weight="800">VAROTE</text></g>
       </svg>
 
       <div class="hero-foot" id="hero-foot">
@@ -282,7 +281,9 @@ main, header, footer { position: relative; z-index: 1; }
         <p class="clock" aria-live="off"><span class="dot" aria-hidden="true"></span><b id="clock">Dubai</b> in Dubai</p>
       </div>
     </section>
+  </div>
 
+  <div class="wrap">
     <section class="sec" id="work">
       <h2><span class="t">Things I’ve built</span></h2>
       <ul class="proj body">
@@ -370,8 +371,8 @@ main, header, footer { position: relative; z-index: 1; }
       <h2><span class="t">What I build with</span></h2>
       <div class="prose body"><p>Python and TypeScript, Next.js and React for the web, Flutter for mobile apps, and Supabase behind them.</p></div>
     </section>
-  </main>
-</div>
+  </div>
+</main>
 
 <div class="band" id="band" aria-hidden="true">
   <div class="track" id="track"><span>Python</span><span>TypeScript</span><span>Next.js</span><span>React</span><span>Flutter</span><span>Supabase</span></div>
@@ -397,7 +398,6 @@ main, header, footer { position: relative; z-index: 1; }
     </div>
     <svg class="lit trace" id="foot-name" viewBox="-3 -3 1567 146" aria-hidden="true">
       <defs>
-        <g id="foot-words"><text x="-3" y="140">AMOGHREX</text></g>
         <radialGradient id="foot-grad">
           <stop offset="0" stop-color="#fff"/>
           <stop offset=".45" stop-color="#fff" stop-opacity=".6"/>
@@ -407,8 +407,8 @@ main, header, footer { position: relative; z-index: 1; }
           <circle class="beam" cx="-500" cy="70" r="0" fill="url(#foot-grad)"/>
         </mask>
       </defs>
-      <use href="#foot-words" class="outline"/>
-      <use href="#foot-words" class="lamp" mask="url(#foot-mask)"/>
+      <g class="outline"><text x="-3" y="140" font-family="Archivo, sans-serif" font-size="200" font-weight="800">AMOGHREX</text></g>
+      <g class="lamp" mask="url(#foot-mask)"><text x="-3" y="140" font-family="Archivo, sans-serif" font-size="200" font-weight="800">AMOGHREX</text></g>
     </svg>
     <div class="fine"><p>© 2026 Amogh Varote</p><p>Built by hand, hosted on Vercel.</p></div>
   </footer>
